@@ -9,8 +9,8 @@ const Header = (props) => {
         <Link to="/">
           <h1>Assignment 6</h1>
         </Link>
-        <HeaderCartButton />
-        <div>
+        <div className={classes.headerBtn}>
+          <HeaderCartButton />
           <Link to="/login">
             <button className={classes.HeaderLoginBtn}>Login</button>
           </Link>

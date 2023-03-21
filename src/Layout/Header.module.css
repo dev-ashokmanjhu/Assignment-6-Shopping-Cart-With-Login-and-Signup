@@ -10,7 +10,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 10;
 }
-
+.headerBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .main-image {
   width: 100%;
   height: 25rem;
@@ -36,6 +40,7 @@
   align-items: center;
   border-radius: 15px;
   font-weight: bold;
+  height: 55px;
 }
 .HeaderLoginBtn:hover {
   background-color: transparent;
