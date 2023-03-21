@@ -54,7 +54,8 @@ p {
   gap: 30%;
 }
 #email,
-#password {
+#password,
+input {
   box-sizing: border-box;
   width: 90%;
   height: 60px;
@@ -90,4 +91,7 @@ p {
 .registerLink {
   color: #007cb6;
   font-weight: 800;
+}
+.errorMessage {
+  color: red;
 }
