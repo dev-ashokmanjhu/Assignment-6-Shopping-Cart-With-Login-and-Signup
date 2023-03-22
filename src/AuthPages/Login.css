@@ -55,7 +55,8 @@ p {
 }
 #email,
 #password,
-input {
+#confirm_password,
+#Name {
   box-sizing: border-box;
   width: 90%;
   height: 60px;

@@ -6,11 +6,11 @@ const Header = (props) => {
   return (
     <>
       <header className={classes.header}>
+        <HeaderCartButton />
         <Link to="/">
           <h1>Assignment 6</h1>
         </Link>
         <div className={classes.headerBtn}>
-          <HeaderCartButton />
           <Link to="/login">
             <button className={classes.HeaderLoginBtn}>Login</button>
           </Link>
