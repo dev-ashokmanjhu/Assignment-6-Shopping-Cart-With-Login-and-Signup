@@ -8,7 +8,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => state.auth);
-  console.log(isAuthenticated);
   const logOutHandler = () => {
     dispatch(authActions.logOut());
     navigate("/login");
