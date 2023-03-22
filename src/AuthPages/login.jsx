@@ -18,8 +18,7 @@ const Login = () => {
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
     onSubmit: (values, actios) => {
-      //   window.alert(JSON.stringify(values, null, 2));
-      console.log(values);
+      window.alert(JSON.stringify(values, null, 2));
       actios.resetForm();
     },
   });
