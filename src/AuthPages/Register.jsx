@@ -22,7 +22,11 @@ const Register = () => {
       password: Yup.string()
         .min(6, "Must be greater than 6")
         .max(15, "Must be 15 characters or less")
-        .required("Required"),
+        .required("Required")
+        .matches(
+          /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
+          "Password Must Be Strong Eg. @Example123"
+        ),
       confirm_password: Yup.string()
         .min(6, "Must be greater than 6")
         .max(15, "Must be 15 characters or less")
