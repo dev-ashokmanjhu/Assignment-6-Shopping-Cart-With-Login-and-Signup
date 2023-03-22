@@ -14,6 +14,9 @@ const Header = (props) => {
           <Link to="/login">
             <button className={classes.HeaderLoginBtn}>Login</button>
           </Link>
+          <Link to="/register">
+            <button className={classes.HeaderLoginBtn}>Register</button>
+          </Link>
         </div>
       </header>
     </>

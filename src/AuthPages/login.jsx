@@ -1,10 +1,11 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -20,6 +21,7 @@ const Login = () => {
     onSubmit: (values, actios) => {
       window.alert(JSON.stringify(values, null, 2));
       actios.resetForm();
+      navigate("/");
     },
   });
   return (

@@ -1,9 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       Name: "",
@@ -32,6 +33,7 @@ const Register = () => {
     onSubmit: (values, actios) => {
       window.alert(JSON.stringify(values, null, 2));
       actios.resetForm();
+      navigate("/");
     },
   });
   return (
