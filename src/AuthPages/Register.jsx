@@ -6,20 +6,13 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      Name: "",
       email: "",
       password: "",
       confirm_password: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
-        .matches(
-          /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
-          "Name can only contain Latin letters."
-        )
-        .required("Required"),
-      lastName: Yup.string()
+      Name: Yup.string()
         .matches(
           /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
           "Name can only contain Latin letters."
@@ -37,8 +30,7 @@ const Register = () => {
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
     onSubmit: (values, actios) => {
-      //   window.alert(JSON.stringify(values, null, 2));
-      console.log(values);
+      window.alert(JSON.stringify(values, null, 2));
       actios.resetForm();
     },
   });
@@ -49,30 +41,16 @@ const Register = () => {
         <form className="form" onSubmit={formik.handleSubmit}>
           <div>
             <input
-              id="firstName"
-              name="firstName"
-              type="firstName"
+              id="Name"
+              name="Name"
+              type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.firstName}
-              placeholder="First Name"
+              value={formik.values.Name}
+              placeholder="Name"
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div className="errorMessage">{formik.errors.firstName}</div>
-            ) : null}
-          </div>
-          <div>
-            <input
-              id="lastName"
-              name="lastName"
-              type="lastName"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.lastName}
-              placeholder="Last Name"
-            />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div className="errorMessage">{formik.errors.lastName}</div>
+            {formik.touched.Name && formik.errors.Name ? (
+              <div className="errorMessage">{formik.errors.Name}</div>
             ) : null}
           </div>
           <div>
@@ -111,7 +89,7 @@ const Register = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.confirm_password}
-              placeholder="Password"
+              placeholder="Confirm Password"
             />
             {formik.touched.confirm_password &&
             formik.errors.confirm_password ? (
