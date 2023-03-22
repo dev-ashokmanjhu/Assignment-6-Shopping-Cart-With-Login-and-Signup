@@ -3,9 +3,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/authSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -19,8 +22,8 @@ const Login = () => {
       email: Yup.string().email("Invalid email address").required("Required"),
     }),
     onSubmit: (values, actios) => {
-      window.alert(JSON.stringify(values, null, 2));
       actios.resetForm();
+      dispatch(authActions.logIn());
       navigate("/");
     },
   });

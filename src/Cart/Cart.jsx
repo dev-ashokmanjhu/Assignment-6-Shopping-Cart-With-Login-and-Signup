@@ -2,11 +2,13 @@ import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cartRedux = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   // making total amount to last two decimal numbers
   const totalAmount = `$${cartRedux.totalAmount.toFixed(2)}`;
   const numberOfCartItems = cartRedux.items.reduce((curNumber, item) => {
@@ -29,6 +31,16 @@ const Cart = (props) => {
   // function for reset Item which set state to defaultstate
   const resetItemsHandler = () => {
     dispatch(cartActions.cartReset());
+  };
+  const orderHandler = () => {
+    if (!isAuthenticated) {
+      alert("Please Login/Register First");
+      navigate("/login");
+    } else {
+      alert("Ordered Successfully");
+      dispatch(cartActions.cartReset());
+      navigate("/");
+    }
   };
   // get items from context and map over them to show in cart and cartItem components
   const cartItems = (
@@ -80,7 +92,11 @@ const Cart = (props) => {
               </button>
             </Link>
           )}
-          {hasItems && <button className={classes.button}>Order</button>}
+          {hasItems && (
+            <button className={classes.button} onClick={orderHandler}>
+              Order
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -1,8 +1,18 @@
 import HeaderCartButton from "./HeaderCartButton";
 import classes from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../store/authSlice";
 
-const Header = (props) => {
+const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  console.log(isAuthenticated);
+  const logOutHandler = () => {
+    dispatch(authActions.logOut());
+    navigate("/login");
+  };
   return (
     <>
       <header className={classes.header}>
@@ -10,14 +20,22 @@ const Header = (props) => {
         <Link to="/">
           <h1>Assignment 6</h1>
         </Link>
-        <div className={classes.headerBtn}>
-          <Link to="/login">
-            <button className={classes.HeaderLoginBtn}>Login</button>
-          </Link>
-          <Link to="/register">
-            <button className={classes.HeaderLoginBtn}>Register</button>
-          </Link>
-        </div>
+        {!isAuthenticated ? (
+          <div className={classes.headerBtn}>
+            <Link to="/login">
+              <button className={classes.HeaderLoginBtn}>Login</button>
+            </Link>
+            <Link to="/register">
+              <button className={classes.HeaderLoginBtn}>Register</button>
+            </Link>
+          </div>
+        ) : (
+          <div className={classes.headerBtn}>
+            <button className={classes.HeaderLoginBtn} onClick={logOutHandler}>
+              LogOut
+            </button>
+          </div>
+        )}
       </header>
     </>
   );
